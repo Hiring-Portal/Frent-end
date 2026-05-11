@@ -33,6 +33,7 @@ export const authAPI = {
   getMe: () => api.get("/auth/me"),
   forgotPassword: (email) => api.post("/auth/forgot-password", { email }),
   resetPassword: (token, password) => api.post("/auth/reset-password", { token, password }),
+  changePassword: (data) => api.post("/auth/change-password", data),
 };
 
 export const studentAPI = {

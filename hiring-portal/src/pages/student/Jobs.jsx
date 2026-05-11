@@ -79,9 +79,26 @@ export default function StudentJobs() {
         </div>
       ) : jobs.length === 0 ? (
         <div className="text-center py-16">
-          <div className="text-4xl mb-3">🔍</div>
-          <h3 className="font-semibold mb-1">No jobs found</h3>
-          <p className="text-muted-foreground text-sm">Try adjusting your search or filters</p>
+          <div className="mb-3 flex justify-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-16 h-16 text-blue-600"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+            >
+              <circle cx="11" cy="11" r="7"></circle>
+              <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+              <path d="M9 10h4M9 13h2" strokeLinecap="round"></path>
+            </svg>
+          </div>
+
+          <h3 className="font-semibold mb-1 text-lg">No jobs found</h3>
+
+          <p className="text-muted-foreground text-sm">
+            Try adjusting your search or filters
+          </p>
         </div>
       ) : (
         <>

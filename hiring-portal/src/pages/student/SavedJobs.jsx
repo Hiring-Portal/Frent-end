@@ -41,7 +41,16 @@ export default function SavedJobs() {
 
       {jobs.length === 0 ? (
         <div className="text-center py-16">
-          <div className="text-4xl mb-3">🔖</div>
+          <div className="mb-3 flex justify-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-14 h-14 text-blue-600"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M6 3a2 2 0 00-2 2v16l8-5 8 5V5a2 2 0 00-2-2H6z" />
+            </svg>
+          </div>
           <h3 className="font-semibold mb-1">No saved jobs yet</h3>
           <p className="text-muted-foreground text-sm mb-4">Save jobs to review them later</p>
           <button onClick={() => setLocation("/student/jobs")} className="px-5 py-2 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 transition">
