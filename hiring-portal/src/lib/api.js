@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "/api",
+  baseURL: "http://localhost:8080/api",
   headers: { "Content-Type": "application/json" },
 });
 
@@ -81,7 +81,7 @@ export const subscriptionAPI = {
 };
 
 export const adminAPI = {
-  getStats: () => api.get("/admin/stats"),
+  getStats: () => api.get("/admin/dashboard"),
   getStudents: (params) => api.get("/admin/students", { params }),
   getCompanies: (params) => api.get("/admin/companies", { params }),
   getJobs: (params) => api.get("/admin/jobs", { params }),
@@ -90,11 +90,11 @@ export const adminAPI = {
   rejectCompany: (id) => api.patch(`/admin/companies/${id}/reject`),
   toggleUserStatus: (id) => api.patch(`/admin/users/${id}/toggle-status`),
   bulkImportStudents: (formData) =>
-    api.post("/admin/bulk-import/students", formData, {
+  api.post("/admin/import/students", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     }),
-  bulkImportCompanies: (formData) =>
-    api.post("/admin/bulk-import/companies", formData, {
+ bulkImportCompanies: (formData) =>
+  api.post("/admin/import/companies", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     }),
 };
