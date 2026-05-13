@@ -63,8 +63,8 @@ export const applicationAPI = {
 export const companyAPI = {
   getProfile: () => api.get("/companies/profile"),
   updateProfile: (data) => api.put("/companies/profile", data),
-  createJob: (data) => api.post("/companies/jobs", data),
-  getMyJobs: () => api.get("/companies/jobs"),
+createJob: (data) => api.post("/jobs", data),
+  getMyJobs: () => api.get("/jobs"),
   updateJob: (id, data) => api.put(`/companies/jobs/${id}`, data),
   deleteJob: (id) => api.delete(`/companies/jobs/${id}`),
   getApplicants: (jobId) => api.get(`/companies/jobs/${jobId}/applicants`),
@@ -76,7 +76,7 @@ export const companyAPI = {
 export const subscriptionAPI = {
   getPlans: () => api.get("/subscriptions/plans"),
   getMy: () => api.get("/subscriptions/my"),
-  createOrder: (planId) => api.post("/subscriptions/create-order", { planId }),
+ createOrder: (planId) => api.post("/subscriptions/create-order", { planType: planId }),
   verify: (data) => api.post("/subscriptions/verify", data),
 };
 

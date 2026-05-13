@@ -336,7 +336,7 @@ function CompanyForm({ onBack }) {
   const [showPass, setShowPass] = useState(false);
 
   const [form, setForm] = useState({
-    companyName: "", email: "", phone: "", password: "", confirmPassword: "",
+    name: "", email: "", phone: "", password: "", confirmPassword: "",
     hrName: "", website: "", industry: "", companySize: "", foundedYear: "",
     city: "", state: "", address: "", description: "",
     gstNumber: "", panNumber: "",
@@ -347,7 +347,7 @@ function CompanyForm({ onBack }) {
 
   const validateStep = () => {
     if (step === 1) {
-      if (!form.companyName.trim()) { setError("Company name is required"); return false; }
+      if (!form.name.trim()) { setError("Name is required"); return false; }
       if (!form.email.trim()) { setError("Email is required"); return false; }
       if (!form.password) { setError("Password is required"); return false; }
       if (form.password.length < 8) { setError("Password must be at least 8 characters"); return false; }
@@ -364,7 +364,7 @@ function CompanyForm({ onBack }) {
     setError(""); setLoading(true);
     try {
       const res = await authAPI.register({
-        name: form.companyName,
+        name: form.name,
         email: form.email,
         password: form.password,
         role: "company",
@@ -398,8 +398,8 @@ function CompanyForm({ onBack }) {
           <h3 className="font-semibold text-base mb-4">Account Information</h3>
           <div className="grid sm:grid-cols-2 gap-3">
             <div className="sm:col-span-2">
-              <label className="block text-sm font-medium mb-1.5">Company Name <span className="text-destructive">*</span></label>
-              <input name="companyName" value={form.companyName} onChange={handle} className={inputCls} placeholder="Acme Technologies Pvt. Ltd." />
+              <label className="block text-sm font-medium mb-1.5">Name <span className="text-destructive">*</span></label>
+              <input name="name" value={form.name} onChange={handle} className={inputCls} placeholder="Acme Technologies Pvt. Ltd." />
             </div>
             <div>
               <label className="block text-sm font-medium mb-1.5">Official Email <span className="text-destructive">*</span></label>
