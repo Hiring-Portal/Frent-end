@@ -13,10 +13,10 @@ export default function CreateJob() {
   const [skillInput, setSkillInput] = useState("");
   const [reqInput, setReqInput] = useState("");
   const [form, setForm] = useState({
-    title: "", description: "", type: "Full-time", experience: "Fresher",
+    title: "", description: "", jobType: "Full-time", experience: "Fresher",
     location: "", openings: 1, deadline: "",
     salary: { min: "", max: "", currency: "INR" },
-    skills: [], requirements: [],
+    skillsRequired: [], requirements: [],
   });
 
   const handleChange = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
@@ -24,10 +24,10 @@ export default function CreateJob() {
 
   const addSkill = () => {
     const s = skillInput.trim();
-    if (s && !form.skills.includes(s)) setForm((f) => ({ ...f, skills: [...f.skills, s] }));
+    if (s && !form.skillsRequired.includes(s)) setForm((f) => ({ ...f, skillsRequired: [...f.skillsRequired, s] }));
     setSkillInput("");
   };
-  const removeSkill = (s) => setForm((f) => ({ ...f, skills: f.skills.filter((sk) => sk !== s) }));
+  const removeSkill = (s) => setForm((f) => ({ ...f, skillsRequired: f.skillsRequired.filter((sk) => sk !== s) }));
 
   const addReq = () => {
     const r = reqInput.trim();
@@ -87,7 +87,7 @@ export default function CreateJob() {
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium mb-1.5">Job Type</label>
-              <select name="type" value={form.type} onChange={handleChange} className={inputCls}>
+              <select name="jobType" value={form.jobType} onChange={handleChange} className={inputCls}>
                 {JOB_TYPES.map((t) => <option key={t}>{t}</option>)}
               </select>
             </div>
@@ -156,7 +156,7 @@ export default function CreateJob() {
             <button type="button" onClick={addSkill} className="px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 transition">Add</button>
           </div>
           <div className="flex flex-wrap gap-2">
-            {form.skills.map((s) => (
+            {form.skillsRequired.map((s) => (
               <span key={s} className="flex items-center gap-1.5 px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">
                 {s}
                 <button type="button" onClick={() => removeSkill(s)} className="hover:text-destructive">×</button>
