@@ -54,10 +54,10 @@ export default function Subscription() {
     try {
       const res = await subscriptionAPI.createOrder(plan.id);
       const orderData = res.data?.data || res.data;
-      const { orderId, amount, currency, key } = orderData;
-
+    const { orderId, amount, currency, keyId } = orderData;
+     console.log("KEY CHECK:", keyId);
       const options = {
-        key: key || import.meta.env.VITE_RAZORPAY_KEY_ID,
+       key: keyId,
         amount: amount || plan.price * 100,
         currency: currency || "INR",
         name: "careers.udugiri.com",
