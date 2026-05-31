@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE = import.meta?.env?.VITE_API_BASE || "https://back-end-7ut2.onrender.com";
+const BASE = "https://back-end-7ut2.onrender.com";
 
 const api = axios.create({
   baseURL: `${BASE}/api`,
