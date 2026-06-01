@@ -1,6 +1,12 @@
 import axios from "axios";
 
-const BASE = "https://back-end-7ut2.onrender.com";
+const DEFAULT_BASE = "https://back-end-7ut2.onrender.com";
+const envBase = import.meta?.env?.VITE_API_BASE;
+// If a VITE_API_BASE exists and points to localhost in production builds,
+// prefer the safe DEFAULT_BASE to avoid accidental calls to developer machines.
+const BASE = (import.meta?.env?.MODE === "production" && envBase && envBase.includes("localhost"))
+  ? DEFAULT_BASE
+  : (envBase ?? DEFAULT_BASE);
 
 const api = axios.create({
   baseURL: `${BASE}/api`,
