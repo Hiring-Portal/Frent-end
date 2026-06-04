@@ -1,9 +1,7 @@
 import axios from "axios";
 
-const BASE = "https://back-end-7ut2.onrender.com";
-
 const api = axios.create({
-  baseURL: `${BASE}/api`,
+  baseURL: "/api",
   headers: { "Content-Type": "application/json" },
 });
 
@@ -65,8 +63,8 @@ export const applicationAPI = {
 export const companyAPI = {
   getProfile: () => api.get("/companies/profile"),
   updateProfile: (data) => api.put("/companies/profile", data),
-createJob: (data) => api.post("/jobs", data),
-  getMyJobs: () => api.get("/jobs"),
+  createJob: (data) => api.post("/companies/jobs", data),
+  getMyJobs: () => api.get("/companies/jobs"),
   updateJob: (id, data) => api.put(`/companies/jobs/${id}`, data),
   deleteJob: (id) => api.delete(`/companies/jobs/${id}`),
   getApplicants: (jobId) => api.get(`/companies/jobs/${jobId}/applicants`),
@@ -78,12 +76,12 @@ createJob: (data) => api.post("/jobs", data),
 export const subscriptionAPI = {
   getPlans: () => api.get("/subscriptions/plans"),
   getMy: () => api.get("/subscriptions/my"),
- createOrder: (planId) => api.post("/subscriptions/create-order", { planType: planId }),
+  createOrder: (planId) => api.post("/subscriptions/create-order", { planId }),
   verify: (data) => api.post("/subscriptions/verify", data),
 };
 
 export const adminAPI = {
-  getStats: () => api.get("/admin/dashboard"),
+  getStats: () => api.get("/admin/stats"),
   getStudents: (params) => api.get("/admin/students", { params }),
   getCompanies: (params) => api.get("/admin/companies", { params }),
   getJobs: (params) => api.get("/admin/jobs", { params }),
@@ -92,11 +90,11 @@ export const adminAPI = {
   rejectCompany: (id) => api.patch(`/admin/companies/${id}/reject`),
   toggleUserStatus: (id) => api.patch(`/admin/users/${id}/toggle-status`),
   bulkImportStudents: (formData) =>
-  api.post("/admin/import/students", formData, {
+    api.post("/admin/bulk-import/students", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     }),
- bulkImportCompanies: (formData) =>
-  api.post("/admin/import/companies", formData, {
+  bulkImportCompanies: (formData) =>
+    api.post("/admin/bulk-import/companies", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     }),
 };
